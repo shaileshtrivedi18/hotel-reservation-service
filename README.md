@@ -44,7 +44,7 @@ App starts on: http://localhost:8080
 
 The credit-card-payment-service client is **auto-generated** from:
 ```
-src/main/resources/openapi/Assignment02_creditcardpayment_api.yaml
+src/main/resources/openapi/creditcardpayment_api.yaml
 ```
 
 Generated code lands in `target/generated-sources/openapi/` under:
