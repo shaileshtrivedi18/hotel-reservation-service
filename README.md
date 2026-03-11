@@ -1,4 +1,4 @@
-# room-reservation-service
+# hotel-reservation-service
 
 Marvel Hospitality Management Corporation — Room Reservation Microservice
 
