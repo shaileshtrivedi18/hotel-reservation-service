@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: room-reservation-service
+
+  datasource:
+    url: jdbc:h2:mem:reservationdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    open-in-view: false           # best practice — disable OSIV
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+  # h2:
+  #   console:
+  #     enabled: true
+  #     path: /h2-console
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: room-reservation-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.marvel.reservation.dto"
+        spring.json.value.default.type: com.marvel.reservation.dto.BankTransferPaymentEvent
+
+  mvc:
+    problemdetails:
+      enabled: true               # RFC 7807 ProblemDetail format for all errors
+
+# Typed config for credit-card-payment-service — bound via @ConfigurationProperties
+credit-card-payment-service:
+  base-url: http://localhost:9090/host/credit-card-payment-api
+  timeout-seconds: 5
+
+reservation:
+  auto-cancel:
+    cron: "0 0 2 * * *"          # runs daily at 02:00 AM
