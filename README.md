@@ -77,7 +77,7 @@ mvn generate-sources
 ```
 
 **Sample curl (CASH payment)**
-'''
+
 curl -X POST http://localhost:8080/api/v1/reservations/confirm \
   -H "Content-Type: application/json" \
   -d '{
@@ -88,7 +88,7 @@ curl -X POST http://localhost:8080/api/v1/reservations/confirm \
     "roomSegment": "LARGE",
     "paymentMode": "CASH"
   }'
-'''
+
 
 **Response:**
 ```json
