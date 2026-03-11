@@ -111,6 +111,7 @@ curl -X POST http://localhost:8080/api/v1/reservations/confirm \
 - `paymentReference` required for CREDIT_CARD → 400
 - `startDate` and `endDate` must be in the future → 400
 - `endDate` must be after `startDate` → 400
+- A Room once booked for a particular dates then it cannot be booked again for same or overlapping dates
 
 **Room Segment values:** `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`
 
